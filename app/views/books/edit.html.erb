@@ -1,0 +1,20 @@
+<!-- !-- マイ投稿編集ページ -->
+< -->
+<h1>Eding Book</h1>
+
+<%= form_for(@book) do |f| %>
+
+<h3>Title</h3>
+<%= f.text_field :title, class: "book_title" %>
+<h3>Opinion</h3>
+<%= f.text_area :opinion, class: "book_body" %>
+
+<%= f.submit 'Update Book' %>
+<% end %>
+
+
+<p><%= link_to "show", book_path %></p><p><%= link_to "Back", books_path, class: "back" %> </p>
+
+
+
+

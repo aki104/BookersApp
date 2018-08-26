@@ -1,0 +1,75 @@
+<!-- マイページの投稿詳細 -->
+
+<body class="main">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-3" style="background-color: white;">
+        <h2>User info</h2>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: "jpg", fallback: "no_image.jpg" %>
+
+		     <table class="table table-striped">
+		       <tr>
+  		       <td>name<td>
+    		     <td><%= @user.name %></td>
+  		     </tr>
+  		     <tr>
+    		     <td>introdaction</td>
+    		     <td><%= @user.introdaction %></td>
+  		    </tr>
+		     </table>
+
+         <% if @bookf.user == current_user %>
+          <%= link_to "", edit_user_path(current_user.id), class: "edit_#{current_user.id} col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+           <% else %>
+          <%= link_to "", user_path(current_user.id), class: "#{current_user.id} col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+          <% end %>
+
+           
+
+
+           <h3>New Book</h3>
+           <%= form_for(@book) do |f| %>
+           <h4>Title</h4>
+           <%= f.text_field :title, class: "book_title" %>
+
+           <h4>Opinion</h4>
+           <%= f.text_field :opinion, class: "book_body" %>
+             <p></p>
+             <%= f.submit 'create Book', class: "btn btn-lg btn-block btn-base-1 mt-20 btn btn-primary col-xs-12" %>
+            <% end %>
+      </div>
+      <div class="col-lg-9">
+
+        <h1 class="main-title">Book detail</h1>
+        <a class="suc">
+          <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>" >
+          <%= value %>
+          </div>
+          <% end %>
+          <%= yield %>
+        </a>
+
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: "jpg", fallback: "no_image.jpg" %></td>
+              <td><%= @bookf.title %></td>
+              <td> <%= @bookf.opinion %></td>
+              <% if @bookf.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path, class: "edit_#{@book.id}" %></td>
+              <td><%= link_to "Destroy", book_path(@bookf), class: "destroy_#{@book.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </tr>
+          </tbody>
+
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
