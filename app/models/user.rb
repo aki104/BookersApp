@@ -14,7 +14,7 @@ attachment :profile_image
 validates :name, presence: true
 validates :name, length: { in: 2..20 }
 # validates :introdaction, presence: true
-validates :introdaction, length: { in: 1..50 }#, on: :update　　#on: :updateはページ指定
+validates :introdaction, length: { maximum: 50 }# on: :edit　　#on: :updateはページ指定
 
 
 #  #usernameを必須・一意とする
