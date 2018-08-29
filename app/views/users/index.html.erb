@@ -29,9 +29,9 @@
             </tr>
          </table>
             <% if @user == current_user %>
-          <%= link_to "", edit_user_path(current_user.id), class: "edit_#{current_user.id}", class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+          <%= link_to "", edit_user_path(current_user.id), class: "edit_user_#{current_user.id}", class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
            <% else %>
-          <%= link_to "", user_path(current_user.id), class: "#{current_user.id}", class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+          <%= link_to "", user_path(current_user.id), class: "user_#{current_user.id}", class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
           <% end %>
             <h3>New Book</h3>
             <%= form_for(@book) do |f| %>
@@ -60,7 +60,7 @@
               <td><%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: "jpg", fallback: "no_image.jpg" %></td>
               <td> <%= user.name %></td>
 
-              <td><%= link_to "Show", user_path(user.id) %></td>
+              <td><%= link_to "Show", user_path(user.id), class: "user_#{user.id}" %></td>
             </tr>
           <% end %>
           </tbody>

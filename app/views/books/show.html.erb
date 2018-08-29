@@ -21,9 +21,9 @@
 		     </table>
 
          <% if @bookf.user == current_user %>
-          <%= link_to "", edit_user_path(current_user.id), class: "edit_#{current_user.id}", class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+          <%= link_to "", edit_user_path(current_user.id), class: "edit_user_#{current_user.id}", class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
            <% else %>
-          <%= link_to "", user_path(current_user.id), class: "#{current_user.id}", class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+          <%= link_to "", user_path(current_user.id), class: "user_#{current_user.id}", class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
           <% end %>
 
            
@@ -59,8 +59,8 @@
               <td><%= @bookf.title %></td>
               <td> <%= @bookf.opinion %></td>
               <% if @bookf.user == current_user %>
-              <td><%= link_to "Edit", edit_book_path, class: "edit_#{@book.id}" %></td>
-              <td><%= link_to "Destroy", book_path(@bookf), class: "destroy_#{@book.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to "Edit", edit_book_path, class: "edit_book_#{@book.id}" %></td>
+              <td><%= link_to "Destroy", book_path(@bookf), class: "destroy_book_#{@book.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
             </tr>
           </tbody>
