@@ -26,8 +26,6 @@
           <%= link_to "", user_path(current_user.id), class: "user_#{current_user.id}", class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
           <% end %>
 
-           
-
 
            <h3>New Book</h3>
            <%= form_for(@book) do |f| %>
@@ -59,8 +57,8 @@
               <td><%= @bookf.title %></td>
               <td> <%= @bookf.opinion %></td>
               <% if @bookf.user == current_user %>
-              <td><%= link_to "Edit", edit_book_path, class: "edit_book_#{@book.id}" %></td>
-              <td><%= link_to "Destroy", book_path(@bookf), class: "destroy_book_#{@book.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to "Edit", edit_book_path(@bookf), class: "edit_book_#{@bookf.id}" %></td>
+              <td><%= link_to "Destroy", book_path(@bookf), class: "destroy_book_#{@bookf.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
             </tr>
           </tbody>

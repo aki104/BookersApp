@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+     if @user.id != current_user.id
+     redirect_to users_path(@user.id)
+   end
   end
 
   def new
@@ -32,6 +35,9 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
     else
       render :edit
+    end
+    def top
+      @user = User.find(current_user.id)
     end
 
 

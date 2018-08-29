@@ -7,7 +7,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    user_path(@user.id)
+    if user_signed_in?
+     user_path(current_user.id)
+    else
+     user_path(@user.id)
+    end
   end
 
 
