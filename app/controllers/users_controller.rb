@@ -36,12 +36,9 @@ class UsersController < ApplicationController
     else
       render :edit
     end
-    def top
-      @user = User.find(current_user.id)
-    end
 
 
-    
+
   end
 
  private
